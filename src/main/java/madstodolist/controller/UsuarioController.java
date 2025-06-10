@@ -27,7 +27,10 @@ public class UsuarioController {
 
     @GetMapping("/registrados/{id}")
     public String mostrarUsuario(@PathVariable Long id, Model model) {
-        Usuario usuario = usuarioService.findUsuarioById(id);
+    Usuario usuario = usuarioService.findUsuarioById(id);
+        if (usuario == null) {
+        return "redirect:/registrados";
+        }
         model.addAttribute("usuario", usuario);
         return "usuarioDetalle";
     }
