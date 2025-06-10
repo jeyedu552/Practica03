@@ -46,6 +46,7 @@ public class LoginController {
             UsuarioData usuario = usuarioService.findByEmail(loginData.geteMail());
 
             managerUserSession.logearUsuario(usuario.getId());
+            session.setAttribute("usuario", usuario);
 
             return "redirect:/usuarios/" + usuario.getId() + "/tareas";
         } else if (loginStatus == UsuarioService.LoginStatus.USER_NOT_FOUND) {
@@ -90,6 +91,7 @@ public class LoginController {
    @GetMapping("/logout")
    public String logout(HttpSession session) {
         managerUserSession.logout();
+        session.invalidate();
         return "redirect:/login";
    }
 }
