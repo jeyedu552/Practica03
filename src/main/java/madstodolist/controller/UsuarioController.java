@@ -5,6 +5,7 @@ import madstodolist.service.UsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,5 +23,12 @@ public class UsuarioController {
         List<Usuario> usuarios = usuarioService.findAllUsuarios();
         model.addAttribute("usuarios", usuarios);
         return "listadoUsuarios";
+    }
+
+    @GetMapping("/registrados/{id}")
+    public String mostrarUsuario(@PathVariable Long id, Model model) {
+        Usuario usuario = usuarioService.findUsuarioById(id);
+        model.addAttribute("usuario", usuario);
+        return "usuarioDetalle";
     }
 }

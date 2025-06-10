@@ -77,4 +77,9 @@ public class UsuarioService {
     public List<Usuario> findAllUsuarios() {
         return usuarioRepository.findAll();
     }
+
+    @Transactional(readOnly = true)
+    public Usuario findUsuarioById(Long id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Detalle del Usuario</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>ID:</strong> <span th:text="${usuario.id}">1</span></li>
+        <li class="list-group-item"><strong>Correo:</strong> <span th:text="${usuario.email}">correo@ejemplo.com</span></li>
+        <li class="list-group-item"><strong>Nombre:</strong> <span th:text="${usuario.nombre}">Nombre</span></li>
+        <li class="list-group-item"><strong>Fecha de Nacimiento:</strong> <span th:text="${usuario.fechaNacimiento}">Fecha Nacimiento</span></li>
+    </ul>
+    <a th:href="@{/registrados}" class="btn btn-secondary mt-3">Volver al listado</a>
+</div>
+</body>
+</html>
